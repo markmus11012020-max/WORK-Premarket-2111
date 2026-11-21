@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Спринт 2. Гипотеза решения</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Segoe UI", Arial, sans-serif; color: #1B1F2A; background: #fff; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { width: 210mm; height: 297mm; padding: 15mm 18mm 12mm; position: relative; page-break-after: always; overflow: hidden; }
+  .page:last-child { page-break-after: auto; }
+  .topline { display: flex; justify-content: space-between; align-items: center; font-size: 8.5pt; letter-spacing: .08em; text-transform: uppercase; color: #6B7280; border-bottom: 1px solid #E5E7EB; padding-bottom: 3mm; margin-bottom: 6mm; }
+  .brand { font-weight: 700; color: #1B1F2A; }
+  h1 { font-size: 24pt; line-height: 1.05; margin: 0 0 3mm; letter-spacing: -.02em; }
+  .subtitle { font-size: 10pt; color: #6B7280; margin: 0 0 6mm; }
+  .thesis { background: #FFF8D6; border-left: 5px solid #FFDD2D; padding: 5mm 6mm; font-size: 11pt; line-height: 1.35; font-weight: 600; margin-bottom: 6mm; }
+  h2 { font-size: 11.5pt; text-transform: uppercase; letter-spacing: .06em; margin: 0 0 3mm; color: #1B1F2A; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; }
+  .variant { background: #F6F7F9; border-radius: 2mm; padding: 4mm; border-top: 3px solid #E5E7EB; }
+  .variant.chosen { background: #FFF8D6; border-top: 3px solid #FFDD2D; }
+  .variant .tag { display: inline-block; background: #1B1F2A; color: #FFDD2D; font-size: 7pt; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: 1mm 2mm; border-radius: 1mm; margin-bottom: 2mm; }
+  .variant h3 { font-size: 10pt; line-height: 1.2; margin: 0 0 2mm; }
+  .variant p { font-size: 8.2pt; line-height: 1.3; margin: 1.2mm 0; color: #374151; }
+  .variant b { color: #1B1F2A; }
+  table { width: 100%; border-collapse: collapse; font-size: 8.5pt; }
+  th { background: #1B1F2A; color: #fff; text-align: left; padding: 2.2mm; font-size: 8pt; font-weight: 600; }
+  td { border-bottom: 1px solid #E5E7EB; padding: 2.2mm; vertical-align: top; line-height: 1.3; }
+  td.chosen { background: #FFF8D6; font-weight: 600; }
+  .callout { background: #1B1F2A; color: #fff; padding: 5mm 6mm; border-radius: 2mm; font-size: 10pt; line-height: 1.35; margin-top: 4mm; }
+  .callout b { color: #FFDD2D; }
+  .footer { position: absolute; left: 18mm; right: 18mm; bottom: 8mm; display: flex; justify-content: space-between; font-size: 8pt; color: #9CA3AF; border-top: 1px solid #E5E7EB; padding-top: 2mm; }
+  .pipeline { display: flex; gap: 1.8mm; align-items: stretch; margin: 4mm 0 6mm; }
+  .pipe { flex: 1; background: #F6F7F9; border-radius: 2mm; padding: 3mm; font-size: 7.8pt; line-height: 1.28; }
+  .pipe .n { font-size: 7pt; font-weight: 700; color: #B38F00; margin-bottom: 1mm; }
+  .pipe b { display: block; font-size: 8.6pt; line-height: 1.15; margin-bottom: 1mm; }
+  .arrow { align-self: center; color: #FFDD2D; font-size: 15pt; font-weight: 800; line-height: 1; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; }
+  .box { background: #F6F7F9; border-radius: 2mm; padding: 4mm; }
+  .box h3 { font-size: 9.5pt; margin: 0 0 2mm; }
+  .box p, .box li { font-size: 8.5pt; line-height: 1.32; color: #374151; }
+  .box ul { margin: 0; padding-left: 4mm; }
+  .box li { margin-bottom: 1.2mm; }
+  .box b { color: #1B1F2A; }
+  .evidence { display: grid; grid-template-columns: repeat(2, 1fr); gap: 3mm; }
+  .ev { background: #F6F7F9; border-radius: 2mm; padding: 3.5mm 4mm; font-size: 8.7pt; line-height: 1.32; }
+  .ev b { display: block; font-size: 9.3pt; margin-bottom: 1mm; }
+  .sources { font-size: 8pt; color: #4B5563; line-height: 1.45; margin-top: 4mm; }
+  .tag { display: inline-block; background: #FFDD2D; color: #1B1F2A; font-size: 7.5pt; font-weight: 700; padding: 1mm 2mm; border-radius: 1mm; text-transform: uppercase; letter-spacing: .05em; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page">
+  <div class="topline"><span class="brand">Инвест. Премаркет</span><span>Этап 2 · Context Loaded · 21.11.2026</span></div>
+
+  <h1>Спринт 2.<br>Гипотеза решения</h1>
+  <div class="subtitle">Три варианта, сравнение и выбор · Нижний Новгород</div>
+
+  <div class="thesis">Выбрали AI-риск-офицера: детерминированное ядро считает, LLM объясняет, человек подтверждает. Это единственный вариант, который одновременно решает проблему понимания, укладывается в 11 дней и проходит комплаенс.</div>
+
+  <h2>Три варианта</h2>
+  <div class="grid3">
+    <div class="variant">
+      <h3>A. Детерминированный риск-монитор</h3>
+      <p><b>Без AI.</b> Дашборд: доля эмитента, концентрация, доходность к оферте, календарь, правила и шаблонные алерты.</p>
+      <p><b>Польза:</b> прозрачно, дешево, легко проверить.</p>
+      <p><b>Ограничения:</b> не объясняет новости и не связывает событие с портфелем. Пользователь сам интерпретирует.</p>
+      <p><b>Сложность:</b> низкая.</p>
+    </div>
+    <div class="variant chosen">
+      <div class="tag">Выбран</div>
+      <h3>B. AI-риск-офицер</h3>
+      <p><b>Ядро считает, LLM объясняет.</b> Событие связывается с портфелем, факты отделяются от слухов, появляются 2–3 сценария.</p>
+      <p><b>Польза:</b> решает проблему понимания и приоритизации.</p>
+      <p><b>Ограничения:</b> качество данных, риск галлюцинаций, комплаенс.</p>
+      <p><b>Сложность:</b> средняя.</p>
+    </div>
+    <div class="variant">
+      <h3>C. AI-торговый робот</h3>
+      <p><b>Авторебалансировка.</b> Агент анализирует рынок, принимает решение и сам совершает сделки.</p>
+      <p><b>Польза:</b> скорость и автоматизация, снимает эмоции.</p>
+      <p><b>Ограничения:</b> регуляторный риск, доступ к исполнению, цена ошибки.</p>
+      <p><b>Сложность:</b> высокая.</p>
+    </div>
+  </div>
+
+  <h2 style="margin-top: 6mm">Сравнение</h2>
+  <table>
+    <tr><th style="width: 35%">Критерий</th><th>A. Без AI</th><th>B. AI-риск-офицер</th><th>C. Торговый робот</th></tr>
+    <tr><td>Польза для пользователя</td><td>Видит сигналы, но не понимает их</td><td class="chosen">Понимает событие, влияние и варианты</td><td>Получает действие без объяснения</td></tr>
+    <tr><td>Сложность</td><td>Низкая</td><td class="chosen">Средняя</td><td>Высокая</td></tr>
+    <tr><td>Комплаенс</td><td>Высокий</td><td class="chosen">Высокий при HITL</td><td>Низкий без отдельного регулирования</td></tr>
+    <tr><td>Реализуемость за 11 дней</td><td>Высокая</td><td class="chosen">Высокая при одном сценарии</td><td>Низкая</td></tr>
+    <tr><td>Направление «AI-агент»</td><td>Не соответствует</td><td class="chosen">Соответствует</td><td>Другая номинация</td></tr>
+  </table>
+
+  <div class="callout"><b>Почему B:</b> проблема не в отсутствии сигналов, а в разрыве между событием и решением. A даёт сигналы, C автоматизирует действие, но не снимает непонимание. B соединяет расчёт, объяснение и подтверждение человеком.</div>
+
+  <div class="footer"><span>Спринт 2 · Гипотеза решения</span><span>1 / 3</span></div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="topline"><span class="brand">Инвест. Премаркет</span><span>Этап 2 · Context Loaded · 21.11.2026</span></div>
+
+  <h1 style="font-size: 21pt; margin-bottom: 4mm">Как работает решение</h1>
+  <div class="subtitle">От события до подтверждённого решения</div>
+
+  <div class="pipeline">
+    <div class="pipe"><div class="n">01</div><b>Событие</b>Новость, просадка, купон, оферта или вопрос.</div>
+    <div class="arrow">→</div>
+    <div class="pipe"><div class="n">02</div><b>Данные MCP</b>Портфель, котировки, стакан, новости, поиск бумаги.</div>
+    <div class="arrow">→</div>
+    <div class="pipe"><div class="n">03</div><b>Ядро</b>YTM/YTC, НКД, дюрация, концентрация, риск-гейт.</div>
+    <div class="arrow">→</div>
+    <div class="pipe"><div class="n">04</div><b>LLM</b>Факты vs слухи, связь с портфелем, 2–3 сценария.</div>
+    <div class="arrow">→</div>
+    <div class="pipe"><div class="n">05</div><b>Человек</b>HITL, решение, аудит.</div>
+  </div>
+
+  <div class="two-col">
+    <div class="box">
+      <h3>AI: что делает</h3>
+      <ul>
+        <li>Понимает запрос и выбирает последовательность проверок.</li>
+        <li>Извлекает событие из новости или раскрытия.</li>
+        <li>Связывает событие с бумагами и долями в портфеле.</li>
+        <li>Объясняет расчёт и формирует сценарии.</li>
+        <li>Приоритизирует 2–3 важных события.</li>
+      </ul>
+      <h3 style="margin-top: 3mm">AI: чего не делает</h3>
+      <ul>
+        <li>Не считает доходность, НКД, дюрацию и налоги.</li>
+        <li>Не даёт инвестиционных рекомендаций и не совершает сделок.</li>
+        <li>Не выдумывает факты и инструменты MCP.</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h3>MCP: что даёт</h3>
+      <ul>
+        <li>Портфель, позиции, доли, свободные средства.</li>
+        <li>Котировки, объёмы, стакан, параметры выпуска.</li>
+        <li>Новости и сентимент по эмитенту.</li>
+        <li>Поиск бумаги по ISIN или тикеру.</li>
+        <li>Sandbox и read-only доступ.</li>
+      </ul>
+      <h3 style="margin-top: 3mm">MCP: что проверить</h3>
+      <ul>
+        <li>График оферт и амортизации.</li>
+        <li>Кредитные события, рейтинги и финансы эмитента.</li>
+        <li>Глубину истории новостей и задержку.</li>
+        <li>Лимиты sandbox и полноту данных по ВДО.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout"><b>Граница ответственности:</b> AI понимает и объясняет, детерминированный код считает и проверяет, человек принимает решение и подтверждает критическое действие.</div>
+
+  <h2 style="margin-top: 5mm">Пример: новость о снижении рейтинга</h2>
+  <div class="evidence">
+    <div class="ev"><b>1. Сигнал</b>В «Пульсе» новость об эмитенте, бумага дешевеет. Пользователь не понимает, это шум или кредитный риск.</div>
+    <div class="ev"><b>2. Проверка</b>MCP: доля эмитента, котировки, стакан, новости. Ядро: YTM/YTC, концентрация, ликвидность.</div>
+    <div class="ev"><b>3. Объяснение</b>LLM: что подтверждено, что слух, три сценария и что проверить до решения.</div>
+    <div class="ev"><b>4. Решение</b>Человек выбирает и подтверждает. Для сделки — HITL. В поддержку не пишет.</div>
+  </div>
+
+  <div class="footer"><span>Спринт 2 · Как работает решение</span><span>2 / 3</span></div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page">
+  <div class="topline"><span class="brand">Инвест. Премаркет</span><span>Этап 2 · Context Loaded · 21.11.2026</span></div>
+
+  <h1 style="font-size: 21pt; margin-bottom: 4mm">Ценность и проверка</h1>
+  <div class="subtitle">Что получает пользователь и что получает бизнес</div>
+
+  <div class="two-col">
+    <div>
+      <h2>Ценность для пользователя</h2>
+      <ul class="box" style="margin: 0; padding-left: 8mm; padding-top: 4mm; padding-bottom: 4mm;">
+        <li>Короткий риск-бриф вместо вечера в лентах.</li>
+        <li>Понимание, как событие влияет на его портфель.</li>
+        <li>2–3 сценария и список того, что проверить.</li>
+        <li>Факты отделены от слухов.</li>
+        <li>Видит даты оферт, амортизации и купонов.</li>
+        <li>Принимает решение или осознанно откладывает его.</li>
+      </ul>
+    </div>
+    <div>
+      <h2>Ценность для Т-Инвестиций</h2>
+      <div class="box">
+        <p><b>Удержание и доверие.</b> Меньше неприятных сюрпризов после просадок и оферт.</p>
+        <p><b>Поддержка.</b> Часть типовых вопросов закрывается объяснением; сложные уходят человеку.</p>
+        <p><b>Комплаенс.</b> Нет рекомендаций и автоторговли; HITL и аудит.</p>
+        <p><b>Вовлечённость.</b> Клиент осмысленнее пользуется портфелем.</p>
+        <p><b>Дифференциация.</b> Риск-офицер, а не ещё одна новостная лента.</p>
+        <p style="font-size: 8pt; color: #6B7280; margin-top: 2mm;">Это гипотезы. Эффект не измерен.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2 style="margin-top: 5mm">Что проверяем на MVP</h2>
+  <div class="evidence">
+    <div class="ev"><b>5–10 реальных кейсов</b>Новость, просадка, оферта, амортизация. Проверяем, что агент находит и объясняет.</div>
+    <div class="ev"><b>5–7 интервью</b>Понимает ли пользователь разбор и меняет ли решение.</div>
+    <div class="ev"><b>MCP в sandbox</b>Состав полей, задержки, лимиты и полнота данных.</div>
+    <div class="ev"><b>Метрики</b>Время до понимания, доля понятных ответов, HITL, темы обращений.</div>
+  </div>
+
+  <div class="callout" style="margin-top: 4mm"><b>Что не обещаем:</b> гарантию доходности, инвестиционные рекомендации, автоторговлю и полную автоматизацию решений. Продукт объясняет риск и варианты, решение остаётся за человеком.</div>
+
+  <div class="sources"><span class="tag">Источники</span><br>T-Invest MCP — developer.tbank.ru/invest/mcp · T-Invest API — developer.tbank.ru/invest/intro/intro · MOEX ISS — moex.com/iss · Банк России — cbr.ru<br>Материал не является инвестиционной рекомендацией. Неподтверждённое помечено как «ПРОВЕРИТЬ».</div>
+
+  <div class="footer"><span>Спринт 2 · Ценность и проверка</span><span>3 / 3</span></div>
+</div>
+
+</body>
+</html>
