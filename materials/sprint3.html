@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Спринт 3. Проверка главного риска</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Segoe UI", Arial, sans-serif; color: #1B1F2A; background: #fff; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { width: 210mm; height: 297mm; padding: 15mm 18mm 12mm; position: relative; page-break-after: always; overflow: hidden; }
+  .page:last-child { page-break-after: auto; }
+  .topline { display: flex; justify-content: space-between; align-items: center; font-size: 8.5pt; letter-spacing: .08em; text-transform: uppercase; color: #6B7280; border-bottom: 1px solid #E5E7EB; padding-bottom: 3mm; margin-bottom: 6mm; }
+  .brand { font-weight: 700; color: #1B1F2A; }
+  h1 { font-size: 24pt; line-height: 1.05; margin: 0 0 3mm; letter-spacing: -.02em; }
+  .subtitle { font-size: 10pt; color: #6B7280; margin: 0 0 6mm; }
+  .thesis { background: #FFF8D6; border-left: 5px solid #FFDD2D; padding: 5mm 6mm; font-size: 11pt; line-height: 1.35; font-weight: 600; margin-bottom: 6mm; }
+  h2 { font-size: 11.5pt; text-transform: uppercase; letter-spacing: .06em; margin: 0 0 3mm; color: #1B1F2A; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3mm; }
+  .card { background: #F6F7F9; border-radius: 2mm; padding: 4mm; }
+  .card .k { font-size: 7.8pt; text-transform: uppercase; letter-spacing: .05em; color: #6B7280; margin-bottom: 1.5mm; }
+  .card .v { font-size: 9.5pt; line-height: 1.25; font-weight: 700; margin-bottom: 1.5mm; }
+  .card p { font-size: 8.5pt; line-height: 1.3; margin: 0; color: #374151; }
+  .pipeline { display: flex; gap: 1.8mm; align-items: stretch; margin: 3mm 0 4mm; }
+  .pipe { flex: 1; background: #F6F7F9; border-radius: 2mm; padding: 3mm; font-size: 7.8pt; line-height: 1.25; }
+  .pipe .n { font-size: 7pt; font-weight: 700; color: #B38F00; margin-bottom: 1mm; }
+  .pipe b { display: block; font-size: 8.5pt; line-height: 1.15; margin-bottom: 1mm; }
+  .arrow { align-self: center; color: #FFDD2D; font-size: 15pt; font-weight: 800; line-height: 1; }
+  .callout { background: #1B1F2A; color: #fff; padding: 5mm 6mm; border-radius: 2mm; font-size: 10pt; line-height: 1.35; margin-top: 4mm; }
+  .callout b { color: #FFDD2D; }
+  table { width: 100%; border-collapse: collapse; font-size: 8.4pt; }
+  th { background: #1B1F2A; color: #fff; text-align: left; padding: 2.2mm; font-size: 8pt; font-weight: 600; }
+  td { border-bottom: 1px solid #E5E7EB; padding: 2.2mm; vertical-align: top; line-height: 1.3; }
+  td.status { color: #B38F00; font-weight: 700; white-space: nowrap; }
+  .footer { position: absolute; left: 18mm; right: 18mm; bottom: 8mm; display: flex; justify-content: space-between; font-size: 8pt; color: #9CA3AF; border-top: 1px solid #E5E7EB; padding-top: 2mm; }
+  .sources { font-size: 8pt; color: #4B5563; line-height: 1.45; margin-top: 4mm; }
+  .tag { display: inline-block; background: #FFDD2D; color: #1B1F2A; font-size: 7.5pt; font-weight: 700; padding: 1mm 2mm; border-radius: 1mm; text-transform: uppercase; letter-spacing: .05em; }
+  ul.clean { margin: 0; padding-left: 4.5mm; }
+  ul.clean li { font-size: 8.7pt; line-height: 1.32; margin-bottom: 1.4mm; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page">
+  <div class="topline"><span class="brand">Инвест. Премаркет</span><span>Этап 2 · Context Loaded · 21.11.2026</span></div>
+
+  <h1>Спринт 3.<br>Проверка главного риска</h1>
+  <div class="subtitle">Обратная связь, главное предположение и способ проверки</div>
+
+  <div class="thesis">Главный риск: AI не извлечёт событие и не свяжет его с портфелем без выдумок. Проверка не завершена, поэтому предположение остаётся в статусе «ПРОВЕРИТЬ».</div>
+
+  <h2>Что изменили после чека</h2>
+  <div class="grid2">
+    <div class="card"><div class="k">Форма</div><div class="v">Короче</div><p>Текст был слишком длинным. Сократили ответы до 900–1000 знаков, убрали повторы и разбили на короткие блоки.</p></div>
+    <div class="card"><div class="k">Событие</div><div class="v">Явный блок</div><p>Замечание «пользователь не видит события» приняли частично: добавили, что произошло, источник, дату, бумаги и статус «подтверждено / проверить».</p></div>
+  </div>
+
+  <h2 style="margin-top: 6mm">Главное предположение</h2>
+  <div class="card" style="background: #FFF8D6; border-left: 4px solid #FFDD2D; padding: 4mm 5mm;">
+    <div class="v" style="font-size: 10.5pt; margin-bottom: 1.5mm;">AI способен на реальных новостях извлечь событие, связать его с портфелем и объяснить без выдуманных фактов и рекомендаций.</div>
+    <p>Если это не так, решение превращается в обычный дашборд.</p>
+  </div>
+
+  <h2 style="margin-top: 6mm">Как проверяем</h2>
+  <div class="pipeline">
+    <div class="pipe"><div class="n">01</div><b>20–30 новостей</b>Реальные события по эмитентам облигаций.</div>
+    <div class="arrow">→</div>
+    <div class="pipe"><div class="n">02</div><b>Разметка</b>Тип события, эмитент, бумага, связь с портфелем.</div>
+    <div class="arrow">→</div>
+    <div class="pipe"><div class="n">03</div><b>Прогон</b>Данные MCP → ядро → LLM.</div>
+    <div class="arrow">→</div>
+    <div class="pipe"><div class="n">04</div><b>Метрики</b>Recall ≥ 0,9, F1 ≥ 0,85, 0 выдумок.</div>
+  </div>
+
+  <h2>Критерии решения</h2>
+  <div class="grid3">
+    <div class="card"><div class="k">Аргумент за</div><div class="v">Порог достигнут</div><p>Recall ≥ 0,9 и F1 ≥ 0,85. Нет выдуманных фактов, чисел и рекомендаций. Сомнительное помечено.</p></div>
+    <div class="card"><div class="k">Аргумент против</div><div class="v">Порог не достигнут</div><p>Recall ниже 0,9 или F1 ниже 0,85. Есть выдумки или рекомендация.</p></div>
+    <div class="card"><div class="k">Недостаточно</div><div class="v">Малая выборка</div><p>Меньше 20 новостей, неполная разметка или только один тип событий. Метрики не считаем доказательством.</p></div>
+  </div>
+
+  <div class="footer"><span>Спринт 3 · Проверка главного риска</span><span>1 / 2</span></div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="topline"><span class="brand">Инвест. Премаркет</span><span>Этап 2 · Context Loaded · 21.11.2026</span></div>
+
+  <h1 style="font-size: 21pt; margin-bottom: 4mm">Что показала проверка</h1>
+  <div class="subtitle">Статус, решение и следующие шаги</div>
+
+  <div class="callout" style="margin-top: 0; margin-bottom: 5mm;"><b>Статус:</b> проверка не завершена. Метод, метрики и тестовый портфель определены; разметка и прогон не закончены. Надёжность извлечения событий и связывания с портфелем пока не подтверждена.</div>
+
+  <div class="grid2">
+    <div class="card">
+      <div class="k">Что уже сделано</div>
+      <ul class="clean">
+        <li>Зафиксировано главное предположение.</li>
+        <li>Определены Recall ≥ 0,9 и F1 ≥ 0,85.</li>
+        <li>Заданы критерии «за / против / недостаточно».</li>
+        <li>Определён тестовый портфель из 5–7 выпусков.</li>
+        <li>Добавлен явный блок события.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="k">Что осталось</div>
+      <ul class="clean">
+        <li>Набрать 20–30 реальных новостей.</li>
+        <li>Разметить тип события, эмитента и бумагу.</li>
+        <li>Прогнать через прототип.</li>
+        <li>Посчитать Recall и F1.</li>
+        <li>Проверить выдумки и рекомендации.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 style="margin-top: 5mm">Как это влияет на решение</h2>
+  <div class="grid2">
+    <div class="card"><div class="v">Сценарий не меняем</div><p>Оставляем событие → проверка → объяснение → сценарии → HITL. Но не выдаём гипотезу за факт.</p></div>
+    <div class="card"><div class="v">Статус — «ПРОВЕРИТЬ»</div><p>Единичные примеры подтверждают возможность, но не надёжность на всех типах событий.</p></div>
+  </div>
+
+  <h2 style="margin-top: 5mm">Когда проверим</h2>
+  <div class="card" style="background: #FFF8D6; border-left: 4px solid #FFDD2D; padding: 4mm 5mm;">
+    <p style="font-size: 9.5pt;"><b>В первые дни MVP, до пилота.</b> Если Recall или F1 ниже порога, меняем промпт, модель или сценарий. Результаты отражаем в отчёте MVP.</p>
+  </div>
+
+  <h2 style="margin-top: 5mm">Риски и меры</h2>
+  <table>
+    <tr><th style="width: 42%">Риск</th><th>Мера</th></tr>
+    <tr><td>LLM выдумывает факт или число</td><td>Числа считает ядро; источники и статус «ПРОВЕРИТЬ»; проверка на 20–30 кейсах.</td></tr>
+    <tr><td>Данные неполные или противоречивые</td><td>Приоритет источников; раскрытия; «нет данных»; ручная проверка.</td></tr>
+    <tr><td>Пользователь слишком доверяет ответу</td><td>Показывать источники, расчёт и границы; не давать рекомендаций; HITL.</td></tr>
+    <tr><td>Комплаенс-риск</td><td>Нет автоторговли и советов; HITL для HIGH/CRITICAL и сделок; аудит.</td></tr>
+    <tr><td>MCP недоступен</td><td>Фикстуры с явной пометкой; сценарий блокируется; данные не подменяем.</td></tr>
+  </table>
+
+  <div class="sources"><span class="tag">Источники</span><br>T-Invest MCP — developer.tbank.ru/invest/mcp · MOEX ISS — moex.com/iss · Банк России — cbr.ru<br>Материал не является инвестиционной рекомендацией. Неподтверждённое помечено как «ПРОВЕРИТЬ».</div>
+
+  <div class="footer"><span>Спринт 3 · Что показала проверка</span><span>2 / 2</span></div>
+</div>
+
+</body>
+</html>
