@@ -70,12 +70,12 @@
     <div class="arrow">→</div>
     <div class="pipe"><div class="n">03</div><b>Прогон</b>LangGraph → MCP → RAG → ядро → LLM.</div>
     <div class="arrow">→</div>
-    <div class="pipe"><div class="n">04</div><b>Метрики</b>Recall/F1, Recall@5, faithfulness, 0 выдумок.</div>
+    <div class="pipe"><div class="n">04</div><b>Метрики</b>Recall/F1, Recall@5, faithfulness (RAGAS), 0 выдумок.</div>
   </div>
 
   <h2>Критерии решения</h2>
   <div class="grid3">
-    <div class="card"><div class="k">Аргумент за</div><div class="v">Порог достигнут</div><p>Recall ≥ 0,9, F1 ≥ 0,85, Recall@5 ≥ 0,9, faithfulness ≥ 0,85. Нет выдумок и рекомендаций.</p></div>
+    <div class="card"><div class="k">Аргумент за</div><div class="v">Порог достигнут</div><p>Recall ≥ 0,9, F1 ≥ 0,85, Recall@5 ≥ 0,9, faithfulness ≥ 0,85 (RAGAS). Нет выдумок.</p></div>
     <div class="card"><div class="k">Аргумент против</div><div class="v">Порог не достигнут</div><p>Метрики ниже порога. Есть выдумки, рекомендация, граф падает или зацикливается.</p></div>
     <div class="card"><div class="k">Недостаточно</div><div class="v">Малая выборка</div><p>Меньше 20 новостей, неполная разметка или только один тип событий.</p></div>
   </div>
@@ -136,7 +136,7 @@
     <tr><td>Комплаенс-риск</td><td>Нет автоторговли и советов; HITL для HIGH/CRITICAL и сделок; аудит.</td></tr>
   </table>
 
-  <div class="sources"><span class="tag">Источники</span><br>T-Invest MCP — developer.tbank.ru/invest/mcp · MOEX ISS — moex.com/iss · Банк России — cbr.ru<br>Материал не является инвестиционной рекомендацией. Неподтверждённое помечено как «ПРОВЕРИТЬ».</div>
+  <div class="sources"><span class="tag">Источники</span><br>T-Invest MCP — developer.tbank.ru/invest/mcp · MOEX ISS — moex.com/iss · Банк России — cbr.ru<br>RAGAS — офлайн-оценка. Материал не является инвестиционной рекомендацией. Неподтверждённое помечено как «ПРОВЕРИТЬ».</div>
 
   <div class="footer"><span>Спринт 3 · Что показала проверка</span><span>2 / 2</span></div>
 </div>
