@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Спринт 1. Пользователь и проблема</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Segoe UI", Arial, sans-serif; color: #1B1F2A; background: #fff; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { width: 210mm; height: 297mm; padding: 15mm 18mm 12mm; position: relative; page-break-after: always; overflow: hidden; }
+  .page:last-child { page-break-after: auto; }
+  .topline { display: flex; justify-content: space-between; align-items: center; font-size: 8.5pt; letter-spacing: .08em; text-transform: uppercase; color: #6B7280; border-bottom: 1px solid #E5E7EB; padding-bottom: 3mm; margin-bottom: 6mm; }
+  .brand { font-weight: 700; color: #1B1F2A; }
+  h1 { font-size: 25pt; line-height: 1.05; margin: 0 0 3mm; letter-spacing: -.02em; }
+  .subtitle { font-size: 10pt; color: #6B7280; margin: 0 0 6mm; }
+  .thesis { background: #FFF8D6; border-left: 5px solid #FFDD2D; padding: 5mm 6mm; font-size: 11.5pt; line-height: 1.35; font-weight: 600; margin-bottom: 7mm; }
+  h2 { font-size: 12pt; text-transform: uppercase; letter-spacing: .06em; margin: 0 0 3mm; color: #1B1F2A; }
+  h2 .num { display: inline-block; width: 6mm; height: 6mm; border-radius: 50%; background: #FFDD2D; color: #1B1F2A; text-align: center; line-height: 6mm; font-size: 8pt; margin-right: 2mm; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; }
+  .card { background: #F6F7F9; border-radius: 2mm; padding: 4mm; }
+  .card .k { font-size: 8pt; text-transform: uppercase; letter-spacing: .05em; color: #6B7280; margin-bottom: 1.5mm; }
+  .card .v { font-size: 9.5pt; line-height: 1.3; font-weight: 700; }
+  .card p { font-size: 8.8pt; line-height: 1.35; margin: 1.5mm 0 0; color: #374151; }
+  .triggers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; }
+  .trigger { background: #fff; border: 1px solid #E5E7EB; border-top: 3px solid #FFDD2D; border-radius: 2mm; padding: 4mm; }
+  .trigger .n { font-size: 18pt; font-weight: 800; color: #FFDD2D; line-height: 1; margin-bottom: 2mm; }
+  .trigger .t { font-size: 9.5pt; font-weight: 700; margin-bottom: 1.5mm; }
+  .trigger p { font-size: 8.6pt; line-height: 1.35; color: #374151; margin: 0; }
+  .pains { display: grid; grid-template-columns: repeat(2, 1fr); gap: 3mm; }
+  .pain { padding: 3.5mm 4mm; background: #F6F7F9; border-radius: 2mm; font-size: 9pt; line-height: 1.35; }
+  .pain b { display: block; font-size: 9.5pt; margin-bottom: 1mm; }
+  .footer { position: absolute; left: 18mm; right: 18mm; bottom: 8mm; display: flex; justify-content: space-between; font-size: 8pt; color: #9CA3AF; border-top: 1px solid #E5E7EB; padding-top: 2mm; }
+  .flow { display: flex; flex-direction: column; gap: 2.2mm; margin-bottom: 6mm; }
+  .step { display: flex; gap: 3mm; align-items: flex-start; }
+  .step .circle { flex: 0 0 7mm; width: 7mm; height: 7mm; border-radius: 50%; background: #1B1F2A; color: #FFDD2D; font-weight: 700; font-size: 8.5pt; text-align: center; line-height: 7mm; }
+  .step .body { flex: 1; border-bottom: 1px dashed #E5E7EB; padding-bottom: 2.2mm; }
+  .step .body b { font-size: 9.5pt; }
+  .step .body p { font-size: 8.6pt; color: #4B5563; margin: 1mm 0 0; line-height: 1.3; }
+  .callout { background: #1B1F2A; color: #fff; padding: 5mm 6mm; border-radius: 2mm; font-size: 10.5pt; line-height: 1.35; margin-top: 4mm; }
+  .callout b { color: #FFDD2D; }
+  .losses { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3mm; margin-top: 4mm; }
+  .loss { background: #FFF8D6; border-radius: 2mm; padding: 3.5mm; }
+  .loss .big { font-size: 15pt; font-weight: 800; color: #1B1F2A; line-height: 1; margin-bottom: 1.5mm; }
+  .loss .txt { font-size: 8.4pt; line-height: 1.3; color: #374151; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; margin-bottom: 6mm; }
+  ul.clean { margin: 0; padding-left: 4.5mm; }
+  ul.clean li { font-size: 9pt; line-height: 1.35; margin-bottom: 1.8mm; }
+  .check li::marker { color: #B38F00; }
+  .evidence { display: grid; grid-template-columns: repeat(2, 1fr); gap: 3mm; margin-bottom: 6mm; }
+  .ev { background: #F6F7F9; border-radius: 2mm; padding: 3.5mm 4mm; font-size: 8.8pt; line-height: 1.35; }
+  .ev b { display: block; font-size: 9.3pt; margin-bottom: 1mm; }
+  table { width: 100%; border-collapse: collapse; font-size: 8.4pt; }
+  th { background: #1B1F2A; color: #fff; text-align: left; padding: 2.2mm; font-size: 8pt; font-weight: 600; }
+  td { border-bottom: 1px solid #E5E7EB; padding: 2.2mm; vertical-align: top; line-height: 1.3; }
+  td.status { color: #B38F00; font-weight: 700; white-space: nowrap; }
+  .sources { font-size: 8pt; color: #4B5563; line-height: 1.45; margin-top: 4mm; }
+  .sources a { color: #1B1F2A; text-decoration: none; border-bottom: 1px solid #FFDD2D; }
+  .tag { display: inline-block; background: #FFDD2D; color: #1B1F2A; font-size: 7.5pt; font-weight: 700; padding: 1mm 2mm; border-radius: 1mm; text-transform: uppercase; letter-spacing: .05em; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page">
+  <div class="topline"><span class="brand">Инвест. Премаркет</span><span>Этап 2 · Context Loaded · 21.11.2026</span></div>
+
+  <h1>Спринт 1.<br>Пользователь и проблема</h1>
+  <div class="subtitle">Рабочие материалы команды · Нижний Новгород</div>
+
+  <div class="thesis">Частный инвестор в облигации РФ видит событие, но не понимает, как оно влияет на его портфель. Он решает задачу в разрозненных данных и информационном шуме — и либо откладывает решение, либо действует на эмоциях.</div>
+
+  <h2><span class="num">1</span>Кто пользователь</h2>
+  <div class="grid3">
+    <div class="card"><div class="k">Сегмент</div><div class="v">Розничный инвестор Т-Инвестиций</div><p>Неквалифицированный или начинающий квалифицированный инвестор.</p></div>
+    <div class="card"><div class="k">Портфель</div><div class="v">300 тыс. — 3 млн ₽</div><p>5–15 выпусков: ВДО, флоатеры, амортизация, оферты.</p></div>
+    <div class="card"><div class="k">Поведение</div><div class="v">Решает сам</div><p>Читает «Пульс» и Telegram, но не строит кредитную модель эмитента.</p></div>
+  </div>
+
+  <h2 style="margin-top: 7mm"><span class="num">2</span>Когда возникает проблема</h2>
+  <div class="triggers">
+    <div class="trigger"><div class="n">01</div><div class="t">Внешний шок</div><p>Ключевая ставка, дефолт или техдефолт в секторе, снижение рейтинга, паника в «Пульсе».</p></div>
+    <div class="trigger"><div class="n">02</div><div class="t">Событие в портфеле</div><p>Приближение пут-оферты, амортизация, крупный купон, который нужно реинвестировать.</p></div>
+    <div class="trigger"><div class="n">03</div><div class="t">Ребалансировка</div><p>Желание включить новый выпуск или заменить просевшую бумагу без перекоса по риску.</p></div>
+  </div>
+
+  <h2 style="margin-top: 7mm"><span class="num">3</span>Что ломается</h2>
+  <div class="pains">
+    <div class="pain"><b>Нет связи с портфелем</b>Событие в новостях, портфель в приложении, расчёт в таблице. Единой картины нет.</div>
+    <div class="pain"><b>Купон ≠ доходность</b>Текущая купонная доходность маскирует доходность к оферте или погашению, НКД и комиссии.</div>
+    <div class="pain"><b>Шум вместо фактов</b>В «Пульсе» и Telegram эмоции, слухи и противоречивые мнения смешаны с фактами.</div>
+    <div class="pain"><b>Нет приоритизации</b>Из 5–15 выпусков непонятно, какое событие важнее сегодня, а что можно отложить.</div>
+  </div>
+
+  <div class="callout" style="margin-top: 3mm; font-size: 9.3pt; padding: 3.2mm 5mm"><b>Почему это важно бизнесу:</b> понятный риск снижает импульсивные решения, повторные обращения в поддержку и негатив после просадок и пропущенных оферт.</div>
+
+  <div class="footer"><span>Спринт 1 · Пользователь и проблема</span><span>1 / 3</span></div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="topline"><span class="brand">Инвест. Премаркет</span><span>Этап 2 · Context Loaded · 21.11.2026</span></div>
+
+  <h1 style="font-size: 21pt; margin-bottom: 4mm">Текущий путь и потери</h1>
+  <div class="subtitle">Что пользователь делает сейчас, где теряет время и риск</div>
+
+  <div class="flow">
+    <div class="step"><div class="circle">1</div><div class="body"><b>Замечает сигнал</b><p>Просадка бумаги, уведомление о купоне или оферте, новость в «Пульсе» или Telegram.</p></div></div>
+    <div class="step"><div class="circle">2</div><div class="body"><b>Проверяет цену и доходность</b><p>Видит текущую купонную доходность, но не доходность к оферте или погашению с учётом НКД, амортизации и комиссий.</p></div></div>
+    <div class="step"><div class="circle">3</div><div class="body"><b>Ищет объяснение</b><p>«Пульс», Telegram-каналы, новости и форумы. Факты смешаны с эмоциями и слухами.</p></div></div>
+    <div class="step"><div class="circle">4</div><div class="body"><b>Считает вручную</b><p>Excel или облигационный калькулятор. Разные формулы и допущения, результат вызывает сомнения.</p></div></div>
+    <div class="step"><div class="circle">5</div><div class="body"><b>Спрашивает поддержку или знакомых</b><p>Получает общий ответ: контекст портфеля не всегда виден, рекомендацию дать нельзя.</p></div></div>
+    <div class="step"><div class="circle">6</div><div class="body"><b>Решает в неопределённости</b><p>Откладывает, сокращает позицию на эмоциях или включает новую бумагу без проверки концентрации.</p></div></div>
+  </div>
+
+  <h2><span class="num">4</span>Что не устраивает</h2>
+  <div class="pains">
+    <div class="pain"><b>Данные разорваны</b>Событие, портфель, расчёт и объяснение живут в разных местах.</div>
+    <div class="pain"><b>Нет ответа для портфеля</b>Видно изменение цены, но не понятно, что оно значит для дохода и риска.</div>
+    <div class="pain"><b>Иллюзия простой доходности</b>Купон выглядит понятно, пока не появляются оферта, амортизация и НКД.</div>
+    <div class="pain"><b>Нет приоритизации</b>Непонятно, какое из событий важнее сегодня и что можно отложить.</div>
+    <div class="pain"><b>Ручной расчёт</b>Долго, разные допущения, высокая цена ошибки.</div>
+    <div class="pain"><b>Пропуск сроков</b>Оферта, амортизация и реинвестирование требуют действия в конкретную дату.</div>
+  </div>
+
+  <div class="losses">
+    <div class="loss"><div class="big">Время</div><div class="txt">Вечер в лентах вместо короткого разбора.</div></div>
+    <div class="loss"><div class="big">Ясность</div><div class="txt">Решение на неполных данных и слухах.</div></div>
+    <div class="loss"><div class="big">Риск</div><div class="txt">Пропуск оферты, концентрация, импульсивная сделка.</div></div>
+    <div class="loss"><div class="big">Доверие</div><div class="txt">Повторные вопросы в поддержку и к самому себе.</div></div>
+  </div>
+
+  <div class="callout"><b>Ключевой разрыв:</b> данные есть, но они не превращаются в понятное решение для конкретного портфеля.</div>
+
+  <div class="footer"><span>Спринт 1 · Текущий путь и потери</span><span>2 / 3</span></div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page">
+  <div class="topline"><span class="brand">Инвест. Премаркет</span><span>Этап 2 · Context Loaded · 21.11.2026</span></div>
+
+  <h1 style="font-size: 21pt; margin-bottom: 4mm">Желаемый результат и основания</h1>
+  <div class="subtitle">Что должно измениться и на чём основано понимание проблемы</div>
+
+  <div class="two-col">
+    <div>
+      <h2>К чему стремится пользователь</h2>
+      <ul class="clean">
+        <li>Понять, что произошло и подтверждено ли событие официально.</li>
+        <li>Увидеть, какие бумаги и эмитенты затронуты и какова их доля в портфеле.</li>
+        <li>Оценить влияние на доходность к оферте или погашению, риск, ликвидность и сроки.</li>
+        <li>Получить 2–3 сценария действий и последствия каждого.</li>
+        <li>Принять решение или осознанно отложить его.</li>
+      </ul>
+    </div>
+    <div>
+      <h2>Признаки, что задача решена</h2>
+      <ul class="clean check">
+        <li>Объясняет событие и его влияние своими словами.</li>
+        <li>Называет затронутые бумаги и долю эмитента.</li>
+        <li>Отличает факты от слухов и знает, что проверено.</li>
+        <li>Видит 2–3 сценария и их последствия.</li>
+        <li>Знает ближайшие даты: оферта, амортизация, купон.</li>
+        <li>Не вынужден искать ответ в десяти каналах.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>На чём основано понимание</h2>
+  <div class="evidence">
+    <div class="ev"><b>Личный опыт</b>Покупка облигаций, оферты, амортизация, купоны, просадки. Понимание процесса, но не исследование.</div>
+    <div class="ev"><b>Публичные обсуждения</b>Вопросы в «Пульсе», Telegram и на форумах: купон vs доходность, оферта, амортизация, реакция на дефолты.</div>
+    <div class="ev"><b>Документация и данные</b>T-Invest MCP и Open API, MOEX ISS, Банк России, раскрытие эмитентов и новости.</div>
+    <div class="ev"><b>Задание и менторы</b>Бизнес-контекст, критерии оценки, границы комплаенса и доступные данные.</div>
+  </div>
+
+  <h2>Что пока не подтверждено</h2>
+  <table>
+    <tr><th style="width: 52%">Предположение</th><th style="width: 15%">Статус</th><th>Как проверить</th></tr>
+    <tr><td>Сегмент 300 тыс. — 3 млн ₽ и 5–15 выпусков</td><td class="status">ПРОВЕРИТЬ</td><td>Интервью и аналитика</td></tr>
+    <tr><td>Частота событий и время на разбор</td><td class="status">ПРОВЕРИТЬ</td><td>Интервью, логи, кейсы</td></tr>
+    <tr><td>Нужен риск-вердикт, а не готовая рекомендация</td><td class="status">ПРОВЕРИТЬ</td><td>5–7 интервью</td></tr>
+    <tr><td>Пользователь готов пользоваться агентом в Т-Инвестициях</td><td class="status">ПРОВЕРИТЬ</td><td>Прототип, тест сценария</td></tr>
+    <tr><td>MCP в sandbox отдаёт достаточно данных</td><td class="status">ПРОВЕРИТЬ</td><td>Проверка на площадке</td></tr>
+    <tr><td>Объяснение снижает нагрузку на поддержку и отток</td><td class="status">ПРОВЕРИТЬ</td><td>Пилот, метрики</td></tr>
+  </table>
+
+  <div class="sources">
+    <span class="tag">Источники</span><br>
+    T-Invest MCP — developer.tbank.ru/invest/mcp · T-Invest API — developer.tbank.ru/invest/intro/intro · MOEX ISS — moex.com/iss · Банк России — cbr.ru<br>
+    Материал не является инвестиционной рекомендацией. Неизвестное помечено как «ПРОВЕРИТЬ».
+  </div>
+
+  <div class="footer"><span>Спринт 1 · Желаемый результат и основания</span><span>3 / 3</span></div>
+</div>
+
+</body>
+</html>
