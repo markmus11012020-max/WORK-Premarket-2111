@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Основной сценарий и ошибки</title>
+<style>
+  @page { size: A4 landscape; margin: 0; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Segoe UI", Arial, sans-serif; color: #1B1F2A; background: #fff; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { width: 297mm; height: 210mm; padding: 12mm 14mm 10mm; position: relative; overflow: hidden; }
+  .topline { display: flex; justify-content: space-between; align-items: center; font-size: 8pt; letter-spacing: .08em; text-transform: uppercase; color: #6B7280; border-bottom: 1px solid #E5E7EB; padding-bottom: 2.5mm; margin-bottom: 4mm; }
+  .brand { font-weight: 700; color: #1B1F2A; }
+  h1 { font-size: 20pt; line-height: 1.05; margin: 0 0 2mm; letter-spacing: -.02em; }
+  .subtitle { font-size: 9.5pt; color: #6B7280; margin: 0 0 5mm; }
+  .flow { display: flex; gap: 1.6mm; align-items: stretch; margin-bottom: 4mm; }
+  .step { flex: 1; background: #F6F7F9; border-radius: 2mm; padding: 3.2mm; border-top: 3px solid #E5E7EB; min-height: 32mm; }
+  .step.event { border-top-color: #FFDD2D; background: #FFF8D6; }
+  .step.result { border-top-color: #FFDD2D; background: #FFF8D6; }
+  .step.hitl { background: #1B1F2A; color: #fff; border-top-color: #FFDD2D; }
+  .step .n { font-size: 7pt; font-weight: 700; color: #B38F00; margin-bottom: 1mm; }
+  .step.hitl .n { color: #FFDD2D; }
+  .step b { display: block; font-size: 8.6pt; line-height: 1.15; margin-bottom: 1.2mm; }
+  .step p { font-size: 7.4pt; line-height: 1.28; margin: 0; color: #374151; }
+  .step.hitl p { color: #D1D5DB; }
+  .arrow { align-self: center; color: #FFDD2D; font-size: 13pt; font-weight: 800; line-height: 1; }
+  .legend { display: flex; gap: 4mm; font-size: 7.5pt; color: #6B7280; margin-bottom: 5mm; }
+  .legend span { display: inline-flex; align-items: center; gap: 1.5mm; }
+  .dot { width: 2.5mm; height: 2.5mm; border-radius: 50%; display: inline-block; }
+  .dot.y { background: #FFDD2D; }
+  .dot.g { background: #E5E7EB; }
+  .dot.d { background: #1B1F2A; }
+  h2 { font-size: 10.5pt; text-transform: uppercase; letter-spacing: .06em; margin: 0 0 2.5mm; }
+  .errors { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; }
+  .err { border: 1px solid #E5E7EB; border-left: 4px solid #B38F00; border-radius: 2mm; padding: 3.2mm 4mm; background: #fff; }
+  .err .tag { display: inline-block; background: #FFF8D6; color: #1B1F2A; font-size: 7pt; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; padding: 1mm 2mm; border-radius: 1mm; margin-bottom: 1.5mm; }
+  .err b { display: block; font-size: 8.6pt; margin-bottom: 1mm; }
+  .err p { font-size: 7.8pt; line-height: 1.3; margin: 0; color: #374151; }
+  .callout { background: #1B1F2A; color: #fff; border-radius: 2mm; padding: 3.2mm 5mm; font-size: 8.4pt; line-height: 1.3; margin-top: 4mm; }
+  .callout b { color: #FFDD2D; }
+  .footer { position: absolute; left: 14mm; right: 14mm; bottom: 6mm; display: flex; justify-content: space-between; font-size: 7pt; color: #9CA3AF; border-top: 1px solid #E5E7EB; padding-top: 1.5mm; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topline"><span class="brand">Инвест. Премаркет · Спринт 4</span><span>Этап 2 · Context Loaded · 21.11.2026</span></div>
+
+  <h1>Основной сценарий и ошибки</h1>
+  <div class="subtitle">Один сквозной путь и четыре ветки восстановления</div>
+
+  <div class="flow">
+    <div class="step event"><div class="n">01</div><b>Событие</b><p>Новость, просадка, купон, оферта или вопрос пользователя.</p></div>
+    <div class="arrow">→</div>
+    <div class="step"><div class="n">02</div><b>Карточка события</b><p>Что произошло, источник, дата, эмитент и бумаги, статус «подтверждено / проверить».</p></div>
+    <div class="arrow">→</div>
+    <div class="step"><div class="n">03</div><b>Данные MCP</b><p>T-Invest MCP read-only: портфель, позиции, котировки, стакан, новости.</p></div>
+    <div class="arrow">→</div>
+    <div class="step"><div class="n">04</div><b>Расчёт ядра</b><p>Доля эмитента, концентрация, YTM/YTC, НКД, дюрация, ликвидность, риск-гейт.</p></div>
+    <div class="arrow">→</div>
+    <div class="step"><div class="n">05</div><b>Объяснение LLM</b><p>Факты vs слухи, связь с портфелем, 2–3 сценария и что проверить.</p></div>
+    <div class="arrow">→</div>
+    <div class="step result"><div class="n">06</div><b>Риск-бриф</b><p>Что произошло, как влияет на портфель, какие сценарии и даты важны.</p></div>
+    <div class="arrow">→</div>
+    <div class="step hitl"><div class="n">07</div><b>HITL</b><p>Решение принимает человек. Сделки не исполняются.</p></div>
+  </div>
+
+  <div class="legend">
+    <span><i class="dot y"></i> основной путь</span>
+    <span><i class="dot g"></i> данные и расчёт</span>
+    <span><i class="dot d"></i> подтверждение человеком</span>
+  </div>
+
+  <h2>Если что-то пошло не так</h2>
+  <div class="errors">
+    <div class="err"><div class="tag">Нет данных / MCP</div><b>Показываем «нет данных / ПРОВЕРИТЬ»</b><p>Не подставляем выдумку. Fallback: раскрытия эмитента или ручной ввод. Пользователь видит, чего не хватает.</p></div>
+    <div class="err"><div class="tag">AI ошибся</div><b>Показываем источник и расчёт</b><p>Помечаем «ПРОВЕРИТЬ». Пользователь может открыть источник, исправить данные и перезапустить разбор.</p></div>
+    <div class="err"><div class="tag">Конфликт данных</div><b>Останавливаем сценарий</b><p>HITL и ручная проверка. Не предлагаем решение без подтверждения человеком.</p></div>
+    <div class="err"><div class="tag">Запрос невозможен</div><b>Объясняем границы</b><p>Говорим, чего не хватает и что можно сделать. Не обещаем недоступное.</p></div>
+  </div>
+
+  <div class="callout"><b>Правило:</b> пользователь всегда видит, что проверено, а что нет. HITL обязателен для HIGH/CRITICAL и любых сделок. Автоторговли нет.</div>
+
+  <div class="footer"><span>Спринт 4 · Основной сценарий и ошибки</span><span>1 / 1</span></div>
+</div>
+</body>
+</html>
