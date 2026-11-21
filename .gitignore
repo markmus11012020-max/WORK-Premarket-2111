@@ -1,0 +1,17 @@
+# Secrets and local environment
+.env
+.env.*
+*.token
+*.pem
+*.key
+
+# Dependencies and build artifacts
+node_modules/
+dist/
+build/
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
